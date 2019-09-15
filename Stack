@@ -1,0 +1,57 @@
+#include <stdio.h>
+void push(int x);
+void pop();
+void peak();
+struct node
+{
+    int data;
+    struct node *next;
+}*top=NULL;
+int main()
+{
+    int a[20];
+    int c,x;
+    while(1)
+    {
+        printf("\n1.Push 2.Pop 3.Peak 4.Exit");
+        scanf("%d",&c);
+        switch(c)
+        {
+            case 1:printf("Enter the element to insert");
+                   scanf("%d",&x);
+                   push(x);
+                   break;
+            case 2:pop(); break;
+            case 3:peak(); break;
+            case 4:exit(0);
+            default:printf("\ninvalid selection");
+        }
+    }
+    
+}
+void push(int x)
+{
+   struct node *newnode;
+   newnode=(struct node *)malloc(sizeof(struct node));
+   newnode->data=x;
+   newnode->next=top;
+   top=newnode;
+}
+void pop()
+{
+    struct node *temp=top;
+    if(top==NULL)
+    {
+        printf("\nStack underflow");
+    }
+    else
+    {
+        printf("Deleted item is:%d",temp->data);
+        top=top->next;
+        free(temp);
+    }
+}
+void peak()
+{
+    printf("Peak is:%d",top->data);
+}
