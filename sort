@@ -32,14 +32,14 @@ void main()
         }    
             temp->next=newnode;
             count++;
-    }        
+    }  
+    sort();
+    display();
         
         printf("Enter 1 to continue");
         scanf("%d",&ch);
     
     }while(ch==1);
-    sort();
-    display();
     
 }
 void sort()
