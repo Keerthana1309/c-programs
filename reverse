@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+}*start=NULL;
+int count=0;
+void reverse();
+void display();
+void main()
+{
+    int ch;
+    do
+    {
+    struct node *newnode,*temp;
+    newnode=(struct node *)malloc(sizeof(struct node));
+    printf("\nEnter data to insert :");
+    scanf("%d",&newnode->data);
+    newnode->next=NULL;
+    if(start==NULL)
+    {
+    start=newnode;
+    count++;
+    }
+    else
+    {
+        temp=start;
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+        }    
+            temp->next=newnode;
+            count++;
+    }  
+        
+        printf("Enter 1 to continue");
+        scanf("%d",&ch);
+
+    }while(ch==1);
+    
+    reverse();
+    display();
+}
+void reverse()
+{
+    struct node *temp1,*temp2;
+    int x;
+     temp1=start;
+     temp2=start->next;
+     while(temp2->next!=NULL)
+     {
+        
+             x=temp2->data;
+             temp2->data=temp1->data;
+             temp1->data=x;
+             
+         
+           temp1=temp2->next;
+           temp2=temp1->next;
+     }
+     
+}
+void display()
+{
+    struct node *temp;
+    temp=start;
+    do
+    {
+        printf("%d->",temp->data);
+        temp=temp->next;
+    }while(temp!=NULL);
+}
